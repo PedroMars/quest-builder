@@ -8,7 +8,7 @@ A visual quest automation framework for RuneScape 3, built on a step-based progr
 
 ```
 Lua_Scripts/
-├── nexus_quest_builder.lua   ← Builder GUI (run this in the client)
+├── quest_builder.lua         ← Builder GUI (run this in the client)
 ├── Lodestones.lua            ← Lodestone teleport module (used by builder)
 ├── api.lua                   ← Game API (provided by the client framework)
 └── quests/
@@ -23,7 +23,7 @@ Lua_Scripts/
 
 ## Quick Start
 
-1. Run **`nexus_quest_builder.lua`** inside the RS3 client.
+1. Run **`quest_builder.lua`** inside the RS3 client.
 2. Select a quest from the left panel.
 3. Switch to the **Builder** tab on the right.
 4. Add steps and actions using the `+ Step` button and `+  Add` button.
