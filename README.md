@@ -1,4 +1,4 @@
-# Nexus Quest Builder
+# Quest Builder
 
 A visual quest automation framework for RuneScape 3, built on a step-based progression system.
 
