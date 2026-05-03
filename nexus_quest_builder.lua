@@ -238,7 +238,7 @@ local function TickQuestScan()
                 local is_started  = (ok_s and started == true)
                 local _slug   = name:gsub("[^%w%s%-_]",""):gsub("%s+","_"):lower()
                 local _pascal = name:gsub("[^%w%s]",""):gsub("(%a+)", function(w) return w:sub(1,1):upper()..w:sub(2) end):gsub("%s+","")
-                local _base   = "c:/Users/marsu/MemoryError/Lua_Scripts/quests/"
+                local _base   = "quests/"
                 local function _fexists(p) local f=io.open(p,"r"); if f then f:close() return true end return false end
                 local _has_lua = _fexists(_base.._slug..".lua") or _fexists(_base.._pascal..".lua")
                 local is_auto = LIBRARY[name] ~= nil or _has_lua
@@ -953,7 +953,7 @@ local function ExecuteAction(a)
     elseif t == "set_flag" then
         local _fn = a.flag_name or ""
         if _fn ~= "" and STATE.selected_name then
-            local _dir = "c:/Users/marsu/MemoryError/Lua_Scripts/quests/flags/"
+            local _dir = "quests/flags/"
             local _qn = (STATE.selected_name or ""):gsub("[^%w]", "_")
             local _f = io.open(_dir .. _qn .. "_" .. _fn .. ".flag", "w")
             if _f then _f:write("1"); _f:close() end
@@ -961,7 +961,7 @@ local function ExecuteAction(a)
     elseif t == "check_flag_skip" then
         local _fn = a.flag_name or ""
         if _fn ~= "" and STATE.selected_name then
-            local _dir = "c:/Users/marsu/MemoryError/Lua_Scripts/quests/flags/"
+            local _dir = "quests/flags/"
             local _qn = (STATE.selected_name or ""):gsub("[^%w]", "_")
             local _f = io.open(_dir .. _qn .. "_" .. _fn .. ".flag", "r")
             if _f then _f:close(); STATE.action_queue = {} end
@@ -1227,7 +1227,7 @@ local function ImportRecording()
     local function slug(name)
         return name:gsub("[^%w%s%-_]", ""):gsub("%s+", "_"):lower()
     end
-    local path = "c:/Users/marsu/MemoryError/Lua_Scripts/quests/recordings/" .. slug(STATE.selected_name) .. ".lua"
+    local path = "quests/recordings/" .. slug(STATE.selected_name) .. ".lua"
 
     local fn, err = loadfile(path)
     if not fn then
@@ -1333,7 +1333,7 @@ end
 -- bolt.x = RS3.x  |  bolt.z = RS3.y  |  bolt.y = altura raw (ignorar)
 -- ============================================================================
 
-local BOLT_QUESTS_PATH = "c:/Users/marsu/MemoryError/Lua_Scripts/bolt-questhelper-1.6.0/quests/"
+local BOLT_QUESTS_PATH = "bolt-questhelper-1.6.0/quests/"
 
 local function boltSlug(name)
     return name:lower()
@@ -1768,7 +1768,7 @@ local function ExportQuestScript()
 
     local content = table.concat(lines, "\n")
     local fname = qname:gsub("[^%w%s%-_]", ""):gsub("%s+", "_"):lower()
-    local path = "c:/Users/marsu/MemoryError/Lua_Scripts/quests/" .. fname .. ".lua"
+    local path = "quests/" .. fname .. ".lua"
     local f = io.open(path, "w")
     if not f then return "Erro ao abrir: " .. path end
     f:write(content)
@@ -1777,7 +1777,7 @@ local function ExportQuestScript()
     return "Exportado: quests/" .. fname .. ".lua"
 end
 
-BUILDER_SAVE_DIR = "c:/Users/marsu/MemoryError/Lua_Scripts/quests/"
+BUILDER_SAVE_DIR = "quests/"
 
 function BuilderSlug(qname)
     return (qname or ""):gsub("[^%w%s%-_]", ""):gsub("%s+", "_"):lower()
